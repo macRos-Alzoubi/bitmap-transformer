@@ -2,6 +2,7 @@ package bitmap.transformer;
 
 import javax.imageio.ImageIO;
 import javax.imageio.ImageReader;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -24,6 +25,8 @@ public class Bitmap {
     }
 
 
+    public Bitmap() {
+    }
     public void readImage(File imagePath) {
         if (width != 0 && height != 0)
             fromDiskImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
@@ -73,6 +76,24 @@ public class Bitmap {
 
                 toDiskImage.setRGB(lx, y, pixel);
                 toDiskImage.setRGB(rx, y, pixel);
+            }
+        }
+    }
+
+    public void OrangeBorder(){
+        System.out.println("in red border 1");
+        int borderWidth = 5;
+        int width = fromDiskImage.getWidth();
+        int height = fromDiskImage.getHeight();
+        toDiskImage = new BufferedImage(width, height, fromDiskImage.getType());
+
+
+        System.out.println("in red border 2");
+        for (int x = 0; x < width; x++) {
+            for (int y = 0; y < height; y++) {
+                if (y < borderWidth || y + borderWidth >= height || x < borderWidth || x + borderWidth >= width) {
+                    toDiskImage.setRGB(x, y, ((int) (Color.RED.getRGB() * 0.50)));
+                }
             }
         }
     }

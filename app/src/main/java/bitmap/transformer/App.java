@@ -3,12 +3,24 @@
  */
 package bitmap.transformer;
 
+import java.io.File;
+
 public class App {
     public String getGreeting() {
         return "Hello World!";
     }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+
+//        System.out.println(new App().getGreeting());
+
+
+        Bitmap bitmap = new Bitmap();
+
+        bitmap.readImage(new File("app/src/main/java/resources/sample_640×426 (1).bmp"));
+        bitmap.OrangeBorder();
+        bitmap.writeImage(new File("app/src/main/java/resources/sample_2.bmp"));
+
+
     }
 }
